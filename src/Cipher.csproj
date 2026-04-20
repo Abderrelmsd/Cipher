@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RepositoryUrl>https://github.com/Abderrelmsd/Cipher</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Abderrelmsd/Cipher</PackageProjectUrl>
+    <PackageId>Cipher</PackageId>
+    <Description>Cryptography primitives: authenticated encryption, hashing, HMAC, key management/rotation and JWT signing.</Description>
+    <RootNamespace>Cipher</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.23.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="10.0.12" />
+  </ItemGroup>
+</Project>
