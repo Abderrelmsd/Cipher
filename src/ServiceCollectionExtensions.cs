@@ -26,6 +26,7 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<IHashService, HashService>();
         services.TryAddSingleton<IPasswordHasher, Pbkdf2PasswordHasher>();
         services.TryAddSingleton<IHmacService, HmacService>();
+        services.TryAddSingleton<IDigitalSignatureService, EcdsaSignatureService>();
         services.TryAddSingleton<IJwtService, JwtService>();
         return services;
     }
