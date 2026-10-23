@@ -69,6 +69,14 @@ if (ok && hasher.NeedsRehash(hash)) { /* store hasher.Hash(candidate) after you 
 
 `IHmacService.SignAsync` and `VerifyAsync` use versioned keys from the key store. The stateless `Sign` and `Verify` overloads take a secret you fetched elsewhere, for example from Keep. Verification is always constant-time.
 
+## Digital signatures (ES256)
+
+`IDigitalSignatureService` signs with an `EcdsaP256` key from the store (`SignAsync`) and verifies by key version, or by a
+public key given as PEM, so anyone can check a signature without a shared secret (a signed data package, say).
+`ExportPublicKeyPemAsync` hands out the public key; `CreateKeyPair`, `Sign(privateKeyPem, …)` and `Verify(publicKeyPem, …)`
+serve tooling outside the store. Signatures are the 64-byte IEEE P1363 form JWS uses, so they interoperate with plain .NET
+`ECDsa.SignData`/`VerifyData`.
+
 ## JWT
 
 ```csharp
