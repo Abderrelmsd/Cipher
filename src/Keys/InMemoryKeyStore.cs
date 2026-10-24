@@ -71,8 +71,15 @@ public sealed class InMemoryKeyStore(TimeProvider? timeProvider = null) : IKeySt
     {
         KeyKind.Symmetric => RandomNumberGenerator.GetBytes(32),
         KeyKind.EcdsaP256 => ExportEcdsa(),
+        KeyKind.Rsa2048 => ExportRsa(),
         _ => throw new ArgumentOutOfRangeException(nameof(kind)),
     };
+
+    private static byte[] ExportRsa()
+    {
+        using var rsa = RSA.Create(2048);
+        return rsa.ExportPkcs8PrivateKey();
+    }
 
     private static byte[] ExportEcdsa()
     {

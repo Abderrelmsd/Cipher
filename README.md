@@ -30,7 +30,9 @@ Registering your own `IKeyStore` before `AddCipher` replaces the default in-memo
 
 - `RotateAsync("name")` creates the next version, makes it the active one, and retires the previous version. Retired versions can still decrypt and verify, but are no longer used to encrypt or sign.
 - `RevokeAsync` makes a version unusable everywhere.
-- Key kinds: a symmetric key (AES-256, HMAC, and HS256 tokens) or `KeyKind.EcdsaP256` (ES256 tokens).
+- Key kinds: a symmetric key (AES-256, HMAC, and HS256 tokens), `KeyKind.EcdsaP256` (ES256 tokens), or `KeyKind.Rsa2048` (DKIM
+  rsa-sha256 signing; `RsaKeys.PrivateKeyPem` gives the PEM an MTA signs with and `RsaKeys.PublicKeyBase64` the DNS `p=` value; never
+  used for tokens).
 
 ```csharp
 await keys.RotateAsync("data");

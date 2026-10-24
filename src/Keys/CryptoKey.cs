@@ -7,6 +7,9 @@ public enum KeyKind
 
     /// <summary>ECDSA P-256 key pair stored as PKCS#8 private key: ES256 JWTs.</summary>
     EcdsaP256 = 1,
+
+    /// <summary>RSA 2048-bit key pair stored as a PKCS#8 private key: DKIM rsa-sha256 signing. Never used for tokens.</summary>
+    Rsa2048 = 2,
 }
 
 public enum KeyStatus

@@ -85,6 +85,7 @@ internal sealed class JwtService(IKeyStore keys, IOptions<CipherOptions> options
     {
         KeyKind.Symmetric => (new SymmetricSecurityKey(key.Material) { KeyId = key.Kid }, SecurityAlgorithms.HmacSha256),
         KeyKind.EcdsaP256 => (new ECDsaSecurityKey(ecdsa!) { KeyId = key.Kid }, SecurityAlgorithms.EcdsaSha256),
+        KeyKind.Rsa2048 => throw new CipherException($"Key '{key.KeyId}' is an RSA key for DKIM signing; tokens are signed with symmetric or ECDSA keys."),
         _ => throw new CipherException($"Unsupported key kind {key.Kind}."),
     };
 
